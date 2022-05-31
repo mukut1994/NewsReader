@@ -1,0 +1,48 @@
+body {
+  padding: 30px;
+  background-color: lightgrey;
+}
+
+.search {
+  border-bottom: 3px solid black;
+  margin-bottom: 20px;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+}
+
+.searchBox {
+  border-radius: 5px;
+}
+
+input {
+  margin: 5px;
+}
+
+.news-table table {
+  width: 100%;
+}
+
+.news-table thead {
+  background-color: lightblue;
+}
+
+.news-table tbody :hover {
+  background-color: grey;
+  cursor: pointer;
+}
+
+.news-table th {
+  text-align: start;
+}
+
+.news-image {
+  max-width: 100px;
+  height: auto;
+}
+
+.error {
+  color: darkred;
+  font-weight: bold;
+}
