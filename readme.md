@@ -14,6 +14,15 @@ A simple news search engine powered by https://newsapi.org/ using react and node
 
 3. Open http://localhost:3000 in a browser
 
+Alternatively the api can also be directly accessed via http://localhost:8080/news  
+It accepts 3 query parameters: 
+- `query`: **required**; The content to look for in title or body
+- `from`: optional; The oldest news articles (inclusive)
+- `to`: optional; The newest news articles (inclusive)
+
+example link
+http://localhost:8080/news?query=apple&from=2022-05-31&to=2022-05-31
+
 Tested on node v16.12.0 and npm 8.1.0 in chrome
 
 ## Development
