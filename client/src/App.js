@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import date from 'date-and-time';
+import newsTable from './newsTable';
 
 class App extends React.Component {
   constructor(props) {
@@ -56,11 +57,7 @@ class App extends React.Component {
       return;
     }
 
-    // We could write an async wrapper around setState 
-    // and turn this entire method async for better readability
-    this.setState({
-      loading: true
-    }, () => this.setStateFromQuery(query))
+    this.setState({ loading: true }, () => this.setStateFromQuery(query))
   }
 
   async setStateFromQuery(query) {
@@ -69,11 +66,7 @@ class App extends React.Component {
 
     if(body.status !== "ok")
     {
-      this.setState({
-        loading: false,
-        error: body.status
-      });
-
+      this.setState({ error: body.status });
       return;
     }
     
@@ -82,48 +75,6 @@ class App extends React.Component {
       articles: body.articles
     });
   }
-}
-
-function newsTable(articles) {
-  if(articles.length === 0)
-    return (
-      <span>No results found</span>
-    )
-
-  return (
-    <table>
-      <thead>
-        <tr>
-          <th>Image</th>     
-          <th>Title</th>
-          <th>Source</th>
-          <th>Description</th>     
-          <th>Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        {newsTableBody(articles)}
-      </tbody>
-    </table>
-  )
-}
-
-function newsTableBody(articles) {
-  let ret = [];
-
-  for(let item of articles) {
-    ret.push(
-      <tr onClick={() => window.location = item.url} key={item.title}>
-        <td><img alt="news" className="news-image" src={item.urlToImage} /></td>
-        <td>{item.title}</td>
-        <td>{item.source.name}</td>
-        <td>{item.description}</td>
-        <td>{date.format(new Date(item.publishedAt), "HH:MM YYYY-MM-DD")}</td>
-      </tr>
-    );
-  }
-
-  return ret;
 }
 
 export default App;
